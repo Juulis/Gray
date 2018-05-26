@@ -20,8 +20,6 @@ import java.util.*
 
 class MainActivity : Activity() {
     private var calendar: CalendarPickerView? = null
-    private var theDialog: AlertDialog? = null
-    private var dialogView: CalendarPickerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +30,6 @@ class MainActivity : Activity() {
 
         setUpListeners()
     }
-
 
 
     private fun setUpListeners() {
@@ -49,13 +46,13 @@ class MainActivity : Activity() {
 
     }
 
-    private fun getDateFromMs(date: Date):String{
+    private fun getDateFromMs(date: Date): String {
         val msToDate = Date(date.time)
         val df = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
         return df.format(msToDate)
     }
 
-    private fun setUpCalendar(){
+    private fun setUpCalendar() {
         val nextYear = Calendar.getInstance()
         nextYear.add(Calendar.YEAR, 1)
 
@@ -69,38 +66,9 @@ class MainActivity : Activity() {
     }
 
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        val applyFixes = theDialog != null && theDialog!!.isShowing
-        if (applyFixes) {
-            Log.d(TAG, "Config change: unfix the dimens so I'll get remeasured!")
-            dialogView!!.unfixDialogDimens()
-        }
-        super.onConfigurationChanged(newConfig)
-        if (applyFixes) {
-            dialogView!!.post {
-                Log.d(TAG, "Config change done: re-fix the dimens!")
-                dialogView!!.fixDialogDimens()
-            }
-        }
-    }
-
     companion object {
-        private val TAG = "SampleTimesSquareActivi"
+        val TAG = "Grays planner"
     }
 }
 
 
-//      TODO: put this snippet in a fragment later?
-//    private fun showCalendarInDialog(title: String, layoutResId: Int) {
-//        dialogView = layoutInflater.inflate(layoutResId, null, false) as CalendarPickerView
-//        theDialog = AlertDialog.Builder(this) //
-//                .setTitle(title)
-//                .setView(dialogView)
-//                .setNeutralButton("Dismiss") { dialogInterface, i -> dialogInterface.dismiss() }
-//                .create()
-//        theDialog!!.setOnShowListener {
-//            Log.d(TAG, "onShow: fix the dimens!")
-//            dialogView!!.fixDialogDimens()
-//        }
-//        theDialog!!.show()
-//    }
