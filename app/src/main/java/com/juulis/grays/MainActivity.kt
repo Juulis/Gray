@@ -1,73 +1,58 @@
 package com.juulis.grays
 
-import android.app.Activity
-import android.app.AlertDialog
-import android.content.res.Configuration
 import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 import android.util.Log
-import android.view.View
-import android.widget.Toast
-import android.widget.Toast.LENGTH_SHORT
+import android.widget.TextView
 
-import com.squareup.timessquare.CalendarPickerView
-import com.squareup.timessquare.CalendarPickerView.SelectionMode
-import com.squareup.timessquare.sample.R
+interface IMainActivity {
+    fun setTitle(title: String)
+    fun inflateFragment(fragmentTag: String, date: Long = 0)
+}
 
-import com.squareup.timessquare.CalendarPickerView.OnDateSelectedListener
-import java.text.SimpleDateFormat
-import java.util.*
+class MainActivity : FragmentActivity(), IMainActivity {
+    private val TAG = "MainActivity"
+    private var selectedDate: Long? = null
 
+    private lateinit var toolbar: TextView
 
-class MainActivity : Activity() {
-    private var calendar: CalendarPickerView? = null
+    override fun inflateFragment(fragmentTag: String, date: Long) {
+        Log.d(TAG,"received tag: "+fragmentTag)
+        when (fragmentTag) {
+            getString(R.string.calendar_fragment) -> doTransaction(CalendarFragment(), fragmentTag,true)
+            getString(R.string.medication_fragment) -> doTransaction(MedicationFragment(),fragmentTag,true,date)
+            //getString(R.string.settings_fragment) -> doTransaction(SettingsFragment(),fragmentTag,true,date)
+        }
+    }
+
+    override fun setTitle(title: String) {
+        toolbar.text = title
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.main_activity)
+        toolbar = findViewById(R.id.toolbar_title)
 
-        setContentView(R.layout.sample_calendar_picker)
-
-        setUpCalendar()
-
-        setUpListeners()
+        init()
     }
 
-
-    private fun setUpListeners() {
-        calendar!!.setOnDateSelectedListener(object : OnDateSelectedListener {
-            override fun onDateUnselected(date: Date) {}
-
-            override fun onDateSelected(date: Date) {
-                Log.d(TAG, "Selected time in millis: " + calendar!!.selectedDate.time)
-                val dateFormated = getDateFromMs(date)
-                val toast = "Selected: " + dateFormated
-                Toast.makeText(this@MainActivity, toast, LENGTH_SHORT).show()
-            }
-        })
-
+    private fun init() {
+        val fragment = StartFragment()
+        doTransaction(fragment, getString(R.string.fragment_start), false, 0)
     }
 
-    private fun getDateFromMs(date: Date): String {
-        val msToDate = Date(date.time)
-        val df = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
-        return df.format(msToDate)
-    }
-
-    private fun setUpCalendar() {
-        val nextYear = Calendar.getInstance()
-        nextYear.add(Calendar.YEAR, 1)
-
-        val lastYear = Calendar.getInstance()
-        lastYear.add(Calendar.YEAR, -1)
-
-        calendar = findViewById<View>(R.id.calendar_view) as CalendarPickerView
-        calendar!!.init(lastYear.time, nextYear.time) //
-                .inMode(SelectionMode.SINGLE) //
-                .withSelectedDate(Date())
-    }
-
-
-    companion object {
-        val TAG = "Grays planner"
+    private fun doTransaction(fragment: Fragment, tag: String, addToBackStack: Boolean, selectedDate: Long = 0) {
+        Log.d(TAG,"inflating... : "+tag)
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.main_container, fragment, tag)
+        if (addToBackStack) {
+            transaction.addToBackStack(tag)
+        }
+        transaction.commit()
+        if(!selectedDate.equals(0))
+        this.selectedDate = selectedDate
     }
 }
 

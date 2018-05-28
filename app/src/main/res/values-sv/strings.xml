@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Grays</string>
+    <string name="bulk">bulk</string>
+    <string name="pil">pil</string>
+    <string name="fase">fase</string>
+    <string name="day">Day</string>
+    <string name="settings_button_label">Settings</string>
+    <string name="calendar_button_label">Calendar</string>
+</resources>

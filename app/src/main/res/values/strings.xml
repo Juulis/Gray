@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Grays</string>
-    <string name="Dialog">Dialog</string>
-    <string name="Single">Single</string>
-</resources>
+    <string name="bulk">bulk</string>
+    <string name="pil">pil</string>
+    <string name="fase">fase</string>
+    <string name="day">Day</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment_start">fragment_start</string>
+    <string name="settings_button_label">Settings</string>
+    <string name="calendar_button_label">Calendar</string>
+    <string name="calendar_fragment">calendar_fragment</string>
+    <string name="medication_fragment">medication_fragment</string>
+    <string name="settings_fragment">settings_fragment</string>
+</resources>
