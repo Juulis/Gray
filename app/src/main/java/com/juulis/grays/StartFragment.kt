@@ -14,7 +14,7 @@ class StartFragment : Fragment(), View.OnClickListener {
     private lateinit var calButton: Button
     private lateinit var settingsButton: Button
     private lateinit var iMainActivity: IMainActivity
-    private val TAG = "StartFragment"
+    private val TAG = "Testing in StartFragment "
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_start, container, false)

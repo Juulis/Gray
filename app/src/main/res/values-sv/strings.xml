@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Grays</string>
-    <string name="bulk">bulk</string>
-    <string name="pil">pil</string>
-    <string name="fase">fase</string>
-    <string name="day">Day</string>
-    <string name="settings_button_label">Settings</string>
-    <string name="calendar_button_label">Calendar</string>
+    <string name="bulk">Pulver:</string>
+    <string name="pil">Tablett:</string>
+    <string name="fase">Fas</string>
+    <string name="settings_button_label">Inställningar</string>
+    <string name="calendar_button_label">Kalender</string>
+    <string name="frequency">Antal/dag:</string>
+    <string name="teespoon">tsk</string>
+    <string name="piece">st</string>
+    <string name="every_day">st</string>
+    <string name="no_values_found_this_date">No data on this this date</string>
+    <string name="set_start_date">Change start date</string>
+    <string name="reverse_week">Reverse one week</string>
+    <string name="push_notice_label">Reminder</string>
+    <string name="set_time">Set time</string>
+    <string name="set_first_notice">Set first notice</string>
+    <string name="set_second_notice">Set second notice</string>
+    <string name="set_third_notice">Set third notice</string>
+    <string name="set_fourth_notice">Set fourth notice</string>
+    <string name="set_start_date_button_label">Set this date to start date</string>
+    <string name="set_start_date_cancel_button_label">Cancel</string>
 </resources>

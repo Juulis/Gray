@@ -18,9 +18,9 @@ class CalendarFragment : Fragment() {
 
     private var theDialog: AlertDialog? = null
     private lateinit var calendar: CalendarPickerView
-    private lateinit var setToolbar: IMainActivity
-    private val TAG = "CalendarFragment"
-
+    private lateinit var iMainActivity: IMainActivity
+    private val TAG = "Testing in CalendarFragment "
+    private var isSettingDate: Boolean? = false
 
     companion object {
         fun formatDate(date: Date): String {
@@ -31,16 +31,17 @@ class CalendarFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setToolbar.setTitle(tag!!)
+        iMainActivity.setTitle(tag!!)
     }
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        setToolbar = activity as IMainActivity
+        iMainActivity = activity as IMainActivity
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_calendar, container, false)
+        isSettingDate = arguments?.getBoolean(getString(R.string.set_startdate_boolean), false)
         return view
     }
 
@@ -50,19 +51,40 @@ class CalendarFragment : Fragment() {
         setUpListeners()
     }
 
+
     private fun setUpListeners() {
         calendar.setOnDateSelectedListener(object : CalendarPickerView.OnDateSelectedListener {
             override fun onDateUnselected(date: Date) {}
 
             override fun onDateSelected(date: Date) {
                 Log.d(TAG, "date selected: " + formatDate(date))
-                showMedicationDialog(date)
+                if (!isSettingDate!!) {
+                    showMedicationDialog(date)
+                }else showSetDateDialog(date)
             }
         })
     }
 
+    private fun showSetDateDialog(date: Date) {
+        iMainActivity.inflateFragment(getString(R.string.set_start_date_dialog),date = date.time)
+    }
+
     private fun showMedicationDialog(date: Date) {
-        Log.d(TAG,"showing medicationDialog")
+        Log.d(TAG, "showing medicationDialog")
+        //if(dateOk(date))
+        if (dateOk(date)) {
+            Log.d(TAG, "date=date")
+            iMainActivity.inflateFragment(getString(R.string.medication_fragment), date.time)
+        } else
+            iMainActivity.inflateFragment((getString(R.string.no_data_on_date_dialog)))
+    }
+
+    private fun dateOk(date: Date): Boolean {
+        val medication = Medication(date, Date(iMainActivity.getStoredDate()))
+        if (medication.fase == null)
+            return false
+
+        return true
     }
 
 
