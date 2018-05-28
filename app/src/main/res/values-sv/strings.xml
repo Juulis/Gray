@@ -20,4 +20,5 @@
     <string name="set_fourth_notice">Set fourth notice</string>
     <string name="set_start_date_button_label">Set this date to start date</string>
     <string name="set_start_date_cancel_button_label">Cancel</string>
+    <string name="saved_start_date_msg">You have saved %s</string>
 </resources>

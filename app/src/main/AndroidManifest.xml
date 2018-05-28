@@ -4,6 +4,7 @@
     package="com.juulis.grays">
 
     <application
+        android:theme="@style/Theme.AppCompat.Light"
         android:label="@string/app_name"
         android:icon="@drawable/icon"
         android:allowBackup="false"

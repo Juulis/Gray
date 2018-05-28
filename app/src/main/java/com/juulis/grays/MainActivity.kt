@@ -2,19 +2,21 @@ package com.juulis.grays
 
 import android.content.Context
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.TextView
 import java.util.*
 
 
-class MainActivity : FragmentActivity(), IMainActivity {
+class MainActivity : AppCompatActivity(), IMainActivity {
     private val TAG = "Testing in MainActivity "
+
     private var selectedDate: Long? = null
     private lateinit var toolbar: TextView
-
     override fun inflateFragment(fragmentTag: String, date: Long, setDateMode: Boolean) {
         Log.d(TAG, "received tag: " + fragmentTag)
         when (fragmentTag) {
@@ -30,14 +32,22 @@ class MainActivity : FragmentActivity(), IMainActivity {
         }
     }
 
+    override fun setStoredDate(date: Long) {
+        val prefs = this.getSharedPreferences("com.juulis.grays",Context.MODE_PRIVATE)
+        prefs.edit().putLong(getString(R.string.saved_start_date),date).apply()
+    }
+
     override fun getStoredDate(): Long {
-        val prefs = this.getSharedPreferences(
-                "com.juulis.grays", Context.MODE_PRIVATE)
-        return prefs.getLong("start_date", Date().time)
+        val prefs = this.getSharedPreferences("com.juulis.grays", Context.MODE_PRIVATE)
+        return prefs.getLong(getString(R.string.saved_start_date), Date().time)
     }
 
     override fun setTitle(title: String) {
         //toolbar.text = title
+    }
+
+    override fun showSnackBar(msg: String, color: Int) {
+        Snackbar.make(findViewById(R.id.main_container),msg,Snackbar.LENGTH_LONG).show()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
