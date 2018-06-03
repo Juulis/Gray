@@ -6,7 +6,7 @@ import java.time.ZoneId
 import java.util.*
 import java.time.temporal.ChronoUnit.DAYS
 
-class Medication (date: Date, startDate: Date = Date()) {
+class Medication (startDate: Date, selectedDate: Date) {
 
 
     var bulkAmount: Int? = null
@@ -18,11 +18,9 @@ class Medication (date: Date, startDate: Date = Date()) {
     private val TAG = "Testing in Medication "
 
     init {
-
-
-        val dateToLocal = Instant.ofEpochMilli(date.time).atZone(ZoneId.systemDefault()).toLocalDate()
         val startDateToLocal = Instant.ofEpochMilli(startDate.time).atZone(ZoneId.systemDefault()).toLocalDate()
-        val daysPassed = DAYS.between(startDateToLocal, dateToLocal)
+        val selectedDateToLocal = Instant.ofEpochMilli(selectedDate.time).atZone(ZoneId.systemDefault()).toLocalDate()
+        val daysPassed = DAYS.between(startDateToLocal,selectedDateToLocal)
         when (daysPassed) {
             in 0..2 -> fase = "A"
             in 3..5 -> fase = "B"

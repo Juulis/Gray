@@ -21,6 +21,8 @@ import android.view.*
 class MedicationFragment : DialogFragment() {
     private lateinit var medication: Medication
     private lateinit var selectedDate: Date
+    private lateinit var iMainActivity: IMainActivity
+    private lateinit var startDate: Date
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +31,8 @@ class MedicationFragment : DialogFragment() {
         if (dateInMs != null)
             selectedDate = Date(dateInMs)
 
+        iMainActivity = activity as MainActivity
+        startDate = Date(iMainActivity.getStoredDate())
         setStyle(DialogFragment.STYLE_NO_TITLE,R.style.Theme_CustomDialog)
 
     }
@@ -37,7 +41,7 @@ class MedicationFragment : DialogFragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_medication, container, false)
 
-        medication = Medication(selectedDate)
+        medication = Medication(startDate,selectedDate)
 
         val day = view.findViewById<TextView>(R.id.medication_day)
         val fase = view.findViewById<TextView>(R.id.medication_fase)
@@ -65,12 +69,6 @@ class MedicationFragment : DialogFragment() {
         dialog.window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
         dialog.setCanceledOnTouchOutside(true)
     }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-    }
-
 
 }
 
