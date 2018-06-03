@@ -1,12 +1,11 @@
 package com.juulis.grays
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
-import android.widget.TextView
 import java.util.*
 import android.view.*
+import kotlinx.android.synthetic.main.fragment_medication.*
 
 
 /**
@@ -33,7 +32,7 @@ class MedicationFragment : DialogFragment() {
 
         iMainActivity = activity as MainActivity
         startDate = Date(iMainActivity.getStoredDate())
-        setStyle(DialogFragment.STYLE_NO_TITLE,R.style.Theme_CustomDialog)
+        setStyle(DialogFragment.STYLE_NO_TITLE, R.style.Theme_CustomDialog)
 
     }
 
@@ -41,19 +40,7 @@ class MedicationFragment : DialogFragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_medication, container, false)
 
-        medication = Medication(startDate,selectedDate)
-
-        val day = view.findViewById<TextView>(R.id.medication_day)
-        val fase = view.findViewById<TextView>(R.id.medication_fase)
-        val bulkAmount = view.findViewById<TextView>(R.id.medication_bulk_amount)
-        val pilAmount = view.findViewById<TextView>(R.id.medication_pil_amount)
-        val freq = view.findViewById<TextView>(R.id.medication_frequency)
-
-        day.text = CalendarFragment.formatDate(selectedDate)
-        fase.text = medication.fase
-        bulkAmount.text=medication.bulkAmount.toString()
-        pilAmount.text=medication.pilAmount.toString()
-        freq.text=medication.bulkFreq.toString()
+        medication = Medication(startDate, selectedDate)
 
         val params = dialog.window!!
                 .attributes
@@ -62,6 +49,18 @@ class MedicationFragment : DialogFragment() {
         dialog.window!!.attributes = params
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        medication_date.text = CalendarFragment.formatDate(selectedDate)
+        medication_day.text = getString(R.string.start_day_of_progress,medication.daysProgress)
+        medication_fase.text = getString(R.string.start_fase,medication.fase)
+        medication_bulk.text = getString(R.string.start_bulk_amount,medication.bulkAmount)
+        medication_pil.text = getString(R.string.start_pill_amount,medication.pilAmount)
+        medication_frequency.text = getString(R.string.start_frequency,medication.frequency)
+
     }
 
     override fun onStart() {

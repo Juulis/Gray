@@ -6,12 +6,12 @@ import java.time.ZoneId
 import java.util.*
 import java.time.temporal.ChronoUnit.DAYS
 
-class Medication (startDate: Date, selectedDate: Date) {
+class Medication(startDate: Date, selectedDate: Date) {
 
 
     var bulkAmount: Int? = null
-    var bulkFreq: Int? = null
-    var pilAmount: Double? = null
+    var frequency: Int? = null
+    var pilAmount: String? = null
     var fase: String? = null
     var daysProgress: Long? = null
 
@@ -21,7 +21,7 @@ class Medication (startDate: Date, selectedDate: Date) {
     init {
         val startDateToLocal = Instant.ofEpochMilli(startDate.time).atZone(ZoneId.systemDefault()).toLocalDate()
         val selectedDateToLocal = Instant.ofEpochMilli(selectedDate.time).atZone(ZoneId.systemDefault()).toLocalDate()
-        daysProgress = DAYS.between(startDateToLocal,selectedDateToLocal)
+        daysProgress = DAYS.between(startDateToLocal, selectedDateToLocal)
         when (daysProgress) {
             in 0..2 -> fase = "A"
             in 3..5 -> fase = "B"
@@ -40,11 +40,11 @@ class Medication (startDate: Date, selectedDate: Date) {
 
 
     private fun setupInfo() {
+        val pilAmountDouble = MedicationFactory.valueOf(fase!!).pilAmount
+        pilAmount = if (pilAmountDouble % 1 == 0.0) pilAmountDouble.toInt().toString() else String.format("%.1f",pilAmountDouble)
+        frequency = MedicationFactory.valueOf(fase!!).freq
         bulkAmount = MedicationFactory.valueOf(fase!!).bulkAmount
-        bulkFreq = MedicationFactory.valueOf(fase!!).freq
-        pilAmount = MedicationFactory.valueOf(fase!!).pilAmount
     }
-
 
 }
 

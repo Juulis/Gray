@@ -1,142 +1,77 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/medication_wrapper"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:paddingBottom="50dp"
     android:paddingTop="50dp"
     android:visibility="visible"
-    tools:context="com.juulis.grays.MedicationFragment"
-    tools:layout_editor_absoluteX="8dp"
-    tools:layout_editor_absoluteY="89dp">
+    tools:context="com.juulis.grays.MedicationFragment">
 
+
+    <TextView
+        android:id="@+id/medication_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingBottom="15dp"
+        android:text="Place date here"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/medication_day"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="day"
-        android:textAlignment="textStart"
-        android:textColor="@android:color/black"
+        android:layout_weight="1"
+        android:padding="7dp"
+        android:text="@string/medication_day"
+        android:textAllCaps="false"
         android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="285dp"
-        tools:layout_editor_absoluteY="50dp" />
-
-    <TextView
-        android:id="@+id/fase_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/fase"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="144dp"
-        tools:layout_editor_absoluteY="107dp" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/medication_fase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="fase"
-        android:textColor="@android:color/black"
+        android:layout_weight="1"
+        android:padding="7dp"
+        android:text="@string/start_fase"
+        android:textAllCaps="false"
         android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="193dp"
-        tools:layout_editor_absoluteY="107dp" />
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/medication_bulk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/bulk"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="225dp"
-        tools:layout_editor_absoluteY="160dp" />
+        android:layout_weight="1"
+        android:padding="7dp"
+        android:text="@string/start_bulk_amount"
+        android:textAllCaps="false"
+        android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/medication_bulk_amount"
+        android:id="@+id/medication_pil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="293dp"
-        tools:layout_editor_absoluteY="166dp" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pil"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="225dp"
-        tools:layout_editor_absoluteY="195dp" />
-
-    <TextView
-        android:id="@+id/medication_pil_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="293dp"
-        tools:layout_editor_absoluteY="196dp" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/frequency"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="185dp"
-        tools:layout_editor_absoluteY="231dp" />
+        android:layout_weight="1"
+        android:padding="7dp"
+        android:text="@string/start_pill_amount"
+        android:textAllCaps="false"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/medication_frequency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="3"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="294dp"
-        tools:layout_editor_absoluteY="231dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/teespoon"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="324dp"
-        tools:layout_editor_absoluteY="168dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/piece"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="329dp"
-        tools:layout_editor_absoluteY="199dp" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/every_day"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="329dp"
-        tools:layout_editor_absoluteY="237dp" />
-
-</android.support.constraint.ConstraintLayout>
+        android:layout_weight="1"
+        android:padding="7dp"
+        android:text="@string/start_frequency"
+        android:textAllCaps="false"
+        android:textSize="18sp" />
+</LinearLayout>
