@@ -33,7 +33,7 @@ class MainActivity : FragmentActivity(), IMainActivity {
     override fun getStoredDate(): Long {
         val prefs = this.getSharedPreferences(
                 "com.juulis.grays", Context.MODE_PRIVATE)
-        return prefs.getLong("start_date", Date().time)
+        return prefs.getLong("start_date", -1L)
     }
 
     override fun setTitle(title: String) {

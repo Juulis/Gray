@@ -1,8 +1,6 @@
 package com.juulis.grays
 
-import android.app.AlertDialog
 import android.content.Context
-import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -16,7 +14,6 @@ import java.util.*
 class CalendarFragment : Fragment() {
 
 
-    private var theDialog: AlertDialog? = null
     private lateinit var calendar: CalendarPickerView
     private lateinit var iMainActivity: IMainActivity
     private val TAG = "Testing in CalendarFragment "
@@ -58,29 +55,18 @@ class CalendarFragment : Fragment() {
 
             override fun onDateSelected(date: Date) {
                 Log.d(TAG, "date selected: " + formatDate(date))
-                if (!isSettingDate!!) {
-                    showMedicationDialog(date)
-                }else showSetDateDialog(date)
+                when {
+                    isSettingDate!! || iMainActivity.getStoredDate() == (-1L) ->
+                        iMainActivity.inflateFragment(getString(R.string.set_start_date_dialog), date = date.time)
+                    dateOk(date) -> iMainActivity.inflateFragment(getString(R.string.medication_fragment), date.time)
+                    else -> iMainActivity.inflateFragment((getString(R.string.no_data_on_date_dialog)))
+                }
             }
         })
     }
 
-    private fun showSetDateDialog(date: Date) {
-        iMainActivity.inflateFragment(getString(R.string.set_start_date_dialog),date = date.time)
-    }
-
-    private fun showMedicationDialog(date: Date) {
-        Log.d(TAG, "showing medicationDialog")
-        //if(dateOk(date))
-        if (dateOk(date)) {
-            Log.d(TAG, "date=date")
-            iMainActivity.inflateFragment(getString(R.string.medication_fragment), date.time)
-        } else
-            iMainActivity.inflateFragment((getString(R.string.no_data_on_date_dialog)))
-    }
-
     private fun dateOk(date: Date): Boolean {
-        val medication = Medication(date, Date(iMainActivity.getStoredDate()))
+        val medication = Medication(Date(iMainActivity.getStoredDate()), date)
         if (medication.fase == null)
             return false
 
@@ -99,26 +85,6 @@ class CalendarFragment : Fragment() {
         calendar.init(lastYear.time, nextYear.time) //
                 .inMode(CalendarPickerView.SelectionMode.SINGLE) //
                 .withSelectedDate(Date())
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        val applyFixes = theDialog != null && theDialog!!.isShowing
-        if (applyFixes) {
-            Log.d(TAG, "Config change: unfix the dimens so I'll get remeasured!")
-            calendar.unfixDialogDimens()
-        }
-        super.onConfigurationChanged(newConfig)
-        if (applyFixes) {
-            calendar.post {
-                Log.d(TAG, "Config change done: re-fix the dimens!")
-                calendar.fixDialogDimens()
-            }
-        }
-    }
-
-    interface CalendarFragmentOnDaySelect {
-        fun onDayClicked(dateInMs: Long)
-
     }
 
 }
