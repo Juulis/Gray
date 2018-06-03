@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
         android:id="@+id/start_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
         android:text="@string/start_title"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -24,63 +22,69 @@
         android:id="@+id/start_day_of_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/start_medication_title"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/start_title"
-        app:layout_constraintVertical_bias="0.097" />
+        tools:text="Day of progress" />
 
     <TextView
         android:id="@+id/start_medication_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:text="@string/start_medication_title"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/start_bulk_amount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="333dp" />
+        app:layout_constraintTop_toBottomOf="@+id/start_day_of_progress" />
 
     <TextView
         android:id="@+id/start_bulk_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="11dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:text="@string/start_bulk_amount"
         app:layout_constraintBottom_toTopOf="@+id/start_pil_amount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start_medication_title"
-        app:layout_constraintVertical_bias="0.465" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/start_pil_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="216dp"
+        android:layout_marginBottom="12dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="@string/start_pill_amount"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/start_frequency"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/start_frequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/start_frequency"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="249dp" />
+
     <ImageButton
         android:id="@+id/start_settings_button"
-        android:src="@drawable/settings_btn"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginEnd="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
+        android:src="@drawable/settings_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -88,12 +92,9 @@
         android:id="@+id/start_calendar_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/calendar_button_label"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.804" />
+        app:layout_constraintTop_toBottomOf="@+id/start_frequency" />
 </android.support.constraint.ConstraintLayout>

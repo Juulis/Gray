@@ -33,6 +33,7 @@ class StartFragment : Fragment(), View.OnClickListener {
             start_day_of_progress.text = getString(R.string.start_day_of_progress, medication.daysProgress)
         else start_day_of_progress.text = getString(R.string.start_day_of_progress, 0)
 
+        start_frequency.text = getString(R.string.start_frequency,medication.bulkFreq)
 
         start_calendar_button.setOnClickListener(this)
         start_settings_button.setOnClickListener(this)
