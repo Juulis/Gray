@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(), IMainActivity {
             getString(R.string.medication_fragment) -> doTransaction(MedicationFragment(), fragmentTag, false, date)
             getString(R.string.no_data_on_date_dialog) -> doTransaction(NoDataOnDateDialog(), fragmentTag, false)
             getString(R.string.settings_fragment) -> doTransaction(SettingsFragment(), fragmentTag, true, date)
-            getString(R.string.set_start_date_dialog) -> doTransaction(SetDateDialog(), fragmentTag, true, date)
+            getString(R.string.set_start_date_dialog) -> doTransaction(SetDateDialog(), fragmentTag, false, date)
         }
     }
 

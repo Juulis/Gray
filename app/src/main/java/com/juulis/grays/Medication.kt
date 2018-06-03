@@ -11,8 +11,9 @@ class Medication (startDate: Date, selectedDate: Date) {
 
     var bulkAmount: Int? = null
     var bulkFreq: Int? = null
-    var pilAmount: Number? = null
+    var pilAmount: Double? = null
     var fase: String? = null
+    var daysProgress: Long? = null
 
 
     private val TAG = "Testing in Medication "
@@ -20,8 +21,8 @@ class Medication (startDate: Date, selectedDate: Date) {
     init {
         val startDateToLocal = Instant.ofEpochMilli(startDate.time).atZone(ZoneId.systemDefault()).toLocalDate()
         val selectedDateToLocal = Instant.ofEpochMilli(selectedDate.time).atZone(ZoneId.systemDefault()).toLocalDate()
-        val daysPassed = DAYS.between(startDateToLocal,selectedDateToLocal)
-        when (daysPassed) {
+        daysProgress = DAYS.between(startDateToLocal,selectedDateToLocal)
+        when (daysProgress) {
             in 0..2 -> fase = "A"
             in 3..5 -> fase = "B"
             in 6..8 -> fase = "C"
@@ -48,15 +49,15 @@ class Medication (startDate: Date, selectedDate: Date) {
 }
 
 
-enum class MedicationFactory(val bulkAmount: Int, val pilAmount: Number, val freq: Int) {
-    A(1, 0, 1),
-    B(1, 0, 2),
-    C(2, 0, 1),
+enum class MedicationFactory(val bulkAmount: Int, val pilAmount: Double, val freq: Int) {
+    A(1, 0.0, 1),
+    B(1, 0.0, 2),
+    C(2, 0.0, 1),
     D(2, 0.5, 1),
     E(2, 0.5, 2),
-    F(2, 1, 2),
-    G(2, 1, 3),
-    H(2, 2, 3), //TODO can be 4 freq
-    I(2, 3, 3)  //TODO can be 4 freq
+    F(2, 1.0, 2),
+    G(2, 1.0, 3),
+    H(2, 2.0, 3), //TODO can be 4 freq
+    I(2, 3.0, 3)  //TODO can be 4 freq
 
 }

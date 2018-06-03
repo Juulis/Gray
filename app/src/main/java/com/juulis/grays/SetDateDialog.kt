@@ -57,8 +57,9 @@ class SetDateDialog : DialogFragment(), View.OnClickListener {
     private fun setStartDate(date: Date) {
         iMainActivity.setStoredDate(date.time)
         Log.d(TAG,"saved date: "+CalendarFragment.formatDate(date))
-//        iMainActivity.showSnackBar("testing",5)
-        Snackbar.make(activity!!.findViewById<CoordinatorLayout>(R.id.main_container),"testing", Snackbar.LENGTH_LONG).show()
+        Snackbar.make(activity!!.findViewById<CoordinatorLayout>(R.id.main_container),getString(R.string.saved_start_date_msg,CalendarFragment.formatDate(date)), Snackbar.LENGTH_LONG).show()
+        dialog.dismiss()
+        activity!!.onBackPressed()
     }
 
     private fun cancelDialog() {
