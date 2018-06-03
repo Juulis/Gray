@@ -6,8 +6,8 @@
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:paddingBottom="50dp"
-    android:paddingTop="50dp"
+    android:paddingBottom="25dp"
+    android:paddingTop="25dp"
     android:visibility="visible"
     tools:context="com.juulis.grays.MedicationFragment">
 

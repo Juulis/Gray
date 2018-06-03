@@ -10,7 +10,7 @@
     <string name="set_second_notice">Set second notice</string>
     <string name="set_third_notice">Set third notice</string>
     <string name="set_fourth_notice">Set fourth notice</string>
-    <string name="no_values_found_this_date">No data on this this date</string>
+    <string name="no_values_found_this_date">No data on this date</string>
 
     <!--constants-->
     <string name="app_name">Grays</string>
