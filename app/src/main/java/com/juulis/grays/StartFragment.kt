@@ -3,6 +3,7 @@ package com.juulis.grays
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,21 +24,20 @@ class StartFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val startDate = iMainActivity.getStoredDate()
-        val medication = Medication(Date(startDate), Date())
-
-        start_bulk_amount.text = getString(R.string.start_bulk_amount, medication.bulkAmount)
-        start_pil_amount.text = getString(R.string.start_pill_amount, medication.pilAmount)
-
-        if(startDate!=null)
-            start_day_of_progress.text = getString(R.string.start_day_of_progress, medication.daysProgress)
-        else start_day_of_progress.text = getString(R.string.start_day_of_progress, 0)
-
-        start_frequency.text = getString(R.string.start_frequency,medication.frequency)
-
         start_calendar_button.setOnClickListener(this)
         start_settings_button.setOnClickListener(this)
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val startDate = iMainActivity.getStoredDate()
+        val medication = Medication(Date(startDate), Date())
+        start_bulk_amount.text = getString(R.string.start_bulk_amount, medication.bulkAmount)
+        start_pil_amount.text = getString(R.string.start_pill_amount, medication.pilAmount)
+        start_day_of_progress.text = getString(R.string.start_day_of_progress, medication.daysProgress)
+        start_frequency.text = getString(R.string.start_frequency, medication.frequency)
+        Log.d(TAG,"in onStart")
     }
 
     override fun onClick(v: View?) {

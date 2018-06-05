@@ -1,0 +1,4 @@
+DISCLAIMER
+
+The developer of this app takes no responsibility of any effects from medication taken
+It is the users responsibility to check if the user takes the correct amount of medication noted in the medication manual

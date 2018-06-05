@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.TextView
@@ -15,8 +14,6 @@ import java.util.*
 class MainActivity : AppCompatActivity(), IMainActivity {
     private val TAG = "Testing in MainActivity "
 
-    private var selectedDate: Long? = null
-    private lateinit var toolbar: TextView
     override fun inflateFragment(fragmentTag: String, date: Long, setDateMode: Boolean) {
         Log.d(TAG, "received tag: " + fragmentTag)
         when (fragmentTag) {
@@ -43,7 +40,6 @@ class MainActivity : AppCompatActivity(), IMainActivity {
     }
 
     override fun setTitle(title: String) {
-        //toolbar.text = title
     }
 
     override fun showSnackBar(msg: String, color: Int) {
@@ -53,8 +49,6 @@ class MainActivity : AppCompatActivity(), IMainActivity {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        //toolbar = findViewById(R.id.toolbar_title)
-
         init()
     }
 

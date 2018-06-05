@@ -16,7 +16,7 @@
     <string name="saved_start_date_msg">Du har sparat startdatum %s</string>
     <string name="start_title">Status</string>
     <string name="start_medication_title">Medicin idag</string>
-    <string name="start_bulk_amount">Pulver: %d msk</string>
+    <string name="start_bulk_amount">Pulver: %d tsk</string>
     <string name="start_pill_amount">Tabletter: %s st</string>
     <string name="start_day_of_progress">Dag: %d</string>
     <string name="start_frequency">%d gånger om dagen</string>
