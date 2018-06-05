@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ToggleButton
 import kotlinx.android.synthetic.main.fragment_start.*
 import java.util.*
 
@@ -34,18 +35,38 @@ class StartFragment : Fragment(), View.OnClickListener {
         val startDate = iMainActivity.getStoredDate()
         val medication = Medication(Date(startDate), Date())
         start_title.text = getString(R.string.start_title)
-        if(medication.fase != null) {
+        if (medication.fase != null) {
             start_bulk_amount.text = getString(R.string.start_bulk_amount, medication.bulkAmount)
             start_pil_amount.text = getString(R.string.start_pill_amount, medication.pilAmount)
             start_day_of_progress.text = getString(R.string.start_day_of_progress, medication.daysProgress)
             start_frequency.text = getString(R.string.start_frequency, medication.frequency)
-        }else start_medication_title.text = getString(R.string.start_no_program_today)
+        } else start_medication_title.text = getString(R.string.start_no_program_today)
+
+        setupToggleButtons()
+    }
+
+    private fun setupToggleButtons() {
+        val checkBoxList = iMainActivity.getStartToggleButtons()
+        val doseButtons: MutableList<ToggleButton> = mutableListOf(start_first_dose_button, start_second_dose_button, start_third_dose_button, start_fourth_dose_button)
+
+        Log.d(TAG,"checkBoxList = "+checkBoxList.toString())
+        doseButtons.forEach { btn ->
+                if (checkBoxList[doseButtons.indexOf(btn)]) {
+                    btn.toggle()
+                }
+            btn.setOnClickListener(this)
+        }
     }
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-            R.id.start_calendar_button -> iMainActivity.inflateFragment(getString(R.string.calendar_fragment))
-            R.id.start_settings_button -> iMainActivity.inflateFragment(getString(R.string.settings_fragment))
+            start_calendar_button.id -> iMainActivity.inflateFragment(getString(R.string.calendar_fragment))
+            start_settings_button.id -> iMainActivity.inflateFragment(getString(R.string.settings_fragment))
+            start_first_dose_button.id -> iMainActivity.setStartToggleButtons(0, start_first_dose_button.isChecked)
+            start_second_dose_button.id ->iMainActivity.setStartToggleButtons(1, start_second_dose_button.isChecked)
+            start_third_dose_button.id -> iMainActivity.setStartToggleButtons(2, start_third_dose_button.isChecked)
+            start_fourth_dose_button.id -> iMainActivity.setStartToggleButtons(3, start_fourth_dose_button.isChecked)
+
         }
     }
 
