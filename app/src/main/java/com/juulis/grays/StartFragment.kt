@@ -33,11 +33,13 @@ class StartFragment : Fragment(), View.OnClickListener {
         super.onStart()
         val startDate = iMainActivity.getStoredDate()
         val medication = Medication(Date(startDate), Date())
-        start_bulk_amount.text = getString(R.string.start_bulk_amount, medication.bulkAmount)
-        start_pil_amount.text = getString(R.string.start_pill_amount, medication.pilAmount)
-        start_day_of_progress.text = getString(R.string.start_day_of_progress, medication.daysProgress)
-        start_frequency.text = getString(R.string.start_frequency, medication.frequency)
-        Log.d(TAG,"in onStart")
+        start_title.text = getString(R.string.start_title)
+        if(medication.fase != null) {
+            start_bulk_amount.text = getString(R.string.start_bulk_amount, medication.bulkAmount)
+            start_pil_amount.text = getString(R.string.start_pill_amount, medication.pilAmount)
+            start_day_of_progress.text = getString(R.string.start_day_of_progress, medication.daysProgress)
+            start_frequency.text = getString(R.string.start_frequency, medication.frequency)
+        }else start_medication_title.text = getString(R.string.start_no_program_today)
     }
 
     override fun onClick(v: View?) {

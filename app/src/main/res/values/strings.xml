@@ -28,7 +28,7 @@
     <string name="set_start_date_cancel_button_label">Cancel</string>
     <string name="saved_start_date">saved_start_date</string>
     <string name="saved_start_date_msg">You have saved %s</string>
-    <string name="start_title">Status</string>
+    <string name="start_title">Today's program</string>
     <string name="start_medication_title">Medication today</string>
     <string name="start_bulk_amount">Bulk: %d tsp</string>
     <string name="start_pill_amount">Pills: %s</string>
@@ -36,4 +36,5 @@
     <string name="start_frequency">%d times a day</string>
     <string name="medication_day">Day: %d</string>
     <string name="start_fase">Fase: %s</string>
+    <string name="start_no_program_today">No program to follow today</string>
 </resources>
