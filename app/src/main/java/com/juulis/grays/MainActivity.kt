@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), IMainActivity {
         val dateOfSaveMs = prefs.getLong(getString(R.string.date_of_toggle), Date().time)
         val dateOfSave = Instant.ofEpochMilli(dateOfSaveMs).atZone(ZoneId.systemDefault()).toLocalDateTime()
         val today = now()
-        if (today.dayOfYear == dateOfSave.dayOfYear && dateOfSave.hour < 4) {
+        if (today.dayOfYear == dateOfSave.dayOfYear && dateOfSave.hour > 4) {
             toggleButtons.add(prefs.getBoolean(getString(R.string.took_first_medication), false))
             toggleButtons.add(prefs.getBoolean(getString(R.string.took_second_medication), false))
             toggleButtons.add(prefs.getBoolean(getString(R.string.took_third_medication), false))

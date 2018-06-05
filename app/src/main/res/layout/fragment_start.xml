@@ -58,21 +58,18 @@
             android:id="@+id/start_bulk_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="bulk"
             android:textAlignment="viewStart" />
 
         <TextView
             android:id="@+id/start_pil_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="pil"
             android:textAlignment="viewStart" />
 
         <TextView
             android:id="@+id/start_frequency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="freq"
             android:textAlignment="viewStart" />
 
     </LinearLayout>
@@ -119,9 +116,11 @@
         app:layout_constraintVertical_bias="0.372">
 
         <LinearLayout
+            android:id="@+id/toggle_button_1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <ToggleButton
                 android:id="@+id/start_first_dose_button"
@@ -143,9 +142,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/toggle_button_2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <ToggleButton
                 android:id="@+id/start_second_dose_button"
@@ -167,9 +168,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/toggle_button_3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <ToggleButton
                 android:id="@+id/start_third_dose_button"
@@ -191,9 +194,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/toggle_button_4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <ToggleButton
                 android:id="@+id/start_fourth_dose_button"
