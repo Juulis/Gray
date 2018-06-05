@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.squareup.timessquare.CalendarPickerView
 import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.ZoneId
 import java.util.*
 
 class CalendarFragment : Fragment() {
@@ -85,6 +87,26 @@ class CalendarFragment : Fragment() {
         calendar.init(lastYear.time, nextYear.time) //
                 .inMode(CalendarPickerView.SelectionMode.SINGLE) //
                 .withSelectedDate(Date())
+        val highlightedDates = setUpHighlightDateList()
+        Log.d(TAG,"after setUpHighlightDateList()")
+        calendar.highlightDates(highlightedDates)
+        Log.d(TAG,"after highlightDates()")
+
+    }
+
+    private fun setUpHighlightDateList(): List<Date> {
+        Log.d(TAG,"setUpHighlightDateList()")
+        val dateList: MutableList<Date> = mutableListOf()
+        val storedDate = Date(iMainActivity.getStoredDate())
+        var checkDate = Instant.ofEpochMilli(storedDate.time).atZone(ZoneId.systemDefault()).toLocalDate()
+        var medication = Medication(storedDate, Date.from(checkDate.atStartOfDay(ZoneId.systemDefault()).toInstant()))
+        while (medication.fase != null) {
+            if(medication.fase=="A" || medication.fase=="C" || medication.fase=="E" || medication.fase=="G" || medication.fase=="I")
+                dateList.add(Date.from(checkDate.atStartOfDay(ZoneId.systemDefault()).toInstant()))
+            checkDate = checkDate.plusDays(1)
+            medication = Medication(storedDate, Date.from(checkDate.atStartOfDay(ZoneId.systemDefault()).toInstant()))
+        }
+        return dateList
     }
 
 }
