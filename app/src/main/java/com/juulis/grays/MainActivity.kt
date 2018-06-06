@@ -15,8 +15,6 @@ import java.util.*
 class MainActivity : AppCompatActivity(), IMainActivity {
     private val TAG = "Testing in MainActivity "
 
-    private var selectedDate: Long? = null
-    private lateinit var toolbar: TextView
     override fun inflateFragment(fragmentTag: String, date: Long, setDateMode: Boolean) {
         Log.d(TAG, "received tag: " + fragmentTag)
         when (fragmentTag) {
@@ -29,6 +27,7 @@ class MainActivity : AppCompatActivity(), IMainActivity {
             getString(R.string.no_data_on_date_dialog) -> doTransaction(NoDataOnDateDialog(), fragmentTag, false)
             getString(R.string.settings_fragment) -> doTransaction(SettingsFragment(), fragmentTag, true, date)
             getString(R.string.set_start_date_dialog) -> doTransaction(SetDateDialog(), fragmentTag, false, date)
+            getString(R.string.time_picker_fragment) -> doTransaction(TimePickerFragment(), fragmentTag, false)
         }
     }
 

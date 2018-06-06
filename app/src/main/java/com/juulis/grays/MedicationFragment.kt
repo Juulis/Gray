@@ -32,6 +32,7 @@ class MedicationFragment : DialogFragment() {
 
         iMainActivity = activity as MainActivity
         startDate = Date(iMainActivity.getStoredDate())
+
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.Theme_CustomDialog)
 
     }
