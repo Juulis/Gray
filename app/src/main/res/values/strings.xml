@@ -47,4 +47,6 @@
     <string name="took_third_medication">took_third_medication</string>
     <string name="took_fourth_medication">took_fourth_medication</string>
     <string name="date_of_toggle">date_of_toggle</string>
+    <string name="toggle_state_untoggled">Unchecked dose, sure?</string>
+    <string name="undo_string">UNDO</string>
 </resources>
