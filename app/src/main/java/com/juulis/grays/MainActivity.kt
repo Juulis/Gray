@@ -5,10 +5,11 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.DialogFragment
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.widget.TextView
+import java.time.Instant
+import java.time.LocalDateTime.now
+import java.time.ZoneId
 import java.util.*
 
 
@@ -19,9 +20,9 @@ class MainActivity : AppCompatActivity(), IMainActivity {
         Log.d(TAG, "received tag: " + fragmentTag)
         when (fragmentTag) {
             getString(R.string.calendar_fragment) -> {
-                if (setDateMode){
+                if (setDateMode) {
                     doTransaction(CalendarFragment(), fragmentTag, true, setDateMode = true)
-                }else doTransaction(CalendarFragment(), fragmentTag, true)
+                } else doTransaction(CalendarFragment(), fragmentTag, true)
             }
             getString(R.string.medication_fragment) -> doTransaction(MedicationFragment(), fragmentTag, false, date)
             getString(R.string.no_data_on_date_dialog) -> doTransaction(NoDataOnDateDialog(), fragmentTag, false)
@@ -31,9 +32,39 @@ class MainActivity : AppCompatActivity(), IMainActivity {
         }
     }
 
+    override fun setStartToggleButtons(i: Int, toggle: Boolean) {
+        val prefs = this.getSharedPreferences("com.juulis.grays", Context.MODE_PRIVATE)
+        when (i) {
+            0 -> prefs.edit().putBoolean(getString(R.string.took_first_medication), toggle).apply()
+            1 -> prefs.edit().putBoolean(getString(R.string.took_second_medication), toggle).apply()
+            2 -> prefs.edit().putBoolean(getString(R.string.took_third_medication), toggle).apply()
+            3 -> prefs.edit().putBoolean(getString(R.string.took_fourth_medication), toggle).apply()
+        }
+        prefs.edit().putLong(getString(R.string.date_of_toggle), Date().time).apply()
+    }
+
+    override fun getStartToggleButtons(): List<Boolean> {
+        val toggleButtons = mutableListOf<Boolean>()
+        val prefs = this.getSharedPreferences("com.juulis.grays", Context.MODE_PRIVATE)
+        val dateOfSaveMs = prefs.getLong(getString(R.string.date_of_toggle), Date().time)
+        val dateOfSave = Instant.ofEpochMilli(dateOfSaveMs).atZone(ZoneId.systemDefault()).toLocalDateTime()
+        val today = now()
+        if (today.dayOfYear == dateOfSave.dayOfYear && dateOfSave.hour > 4) {
+            toggleButtons.add(prefs.getBoolean(getString(R.string.took_first_medication), false))
+            toggleButtons.add(prefs.getBoolean(getString(R.string.took_second_medication), false))
+            toggleButtons.add(prefs.getBoolean(getString(R.string.took_third_medication), false))
+            toggleButtons.add(prefs.getBoolean(getString(R.string.took_fourth_medication), false))
+        } else {
+            for (i in 0..3) {
+                toggleButtons.add(i, false)
+            }
+        }
+        return toggleButtons
+    }
+
     override fun setStoredDate(date: Long) {
-        val prefs = this.getSharedPreferences("com.juulis.grays",Context.MODE_PRIVATE)
-        prefs.edit().putLong(getString(R.string.saved_start_date),date).apply()
+        val prefs = this.getSharedPreferences("com.juulis.grays", Context.MODE_PRIVATE)
+        prefs.edit().putLong(getString(R.string.saved_start_date), date).apply()
     }
 
     override fun getStoredDate(): Long {
@@ -42,18 +73,15 @@ class MainActivity : AppCompatActivity(), IMainActivity {
     }
 
     override fun setTitle(title: String) {
-        //toolbar.text = title
     }
 
     override fun showSnackBar(msg: String, color: Int) {
-        Snackbar.make(findViewById(R.id.main_container),msg,Snackbar.LENGTH_LONG).show()
+        Snackbar.make(findViewById(R.id.main_container), msg, Snackbar.LENGTH_LONG).show()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        //toolbar = findViewById(R.id.toolbar_title)
-
         init()
     }
 

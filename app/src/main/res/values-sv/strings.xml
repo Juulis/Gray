@@ -14,12 +14,19 @@
     <string name="set_start_date_button_label">Ställ in startdatum till detta datum</string>
     <string name="set_start_date_cancel_button_label">Avbryt</string>
     <string name="saved_start_date_msg">Du har sparat startdatum %s</string>
-    <string name="start_title">Status</string>
+    <string name="start_title">Dagens program</string>
     <string name="start_medication_title">Medicin idag</string>
-    <string name="start_bulk_amount">Pulver: %d msk</string>
+    <string name="start_bulk_amount">Pulver: %d tsk</string>
     <string name="start_pill_amount">Tabletter: %s st</string>
     <string name="start_day_of_progress">Dag: %d</string>
     <string name="start_frequency">%d gånger om dagen</string>
     <string name="start_fase">Fas: %s</string>
+    <string name="start_no_program_today">Inget program att följa idag</string>
+    <string name="start_first_med">First dose</string>
+    <string name="start_second_med">Second dose</string>
+    <string name="start_third_med">Third dose</string>
+    <string name="start_fourth_med">Fourth dose</string>
+    <string name="toggle_state_untoggled">Unchecked dose, sure?</string>
+    <string name="undo_string">UNDO</string>
     <string name="time_picker_label">Tid för alarm</string>
 </resources>

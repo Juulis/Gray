@@ -7,4 +7,6 @@ interface IMainActivity {
     fun getStoredDate():Long
     fun setStoredDate(date: Long)
     fun showSnackBar(msg: String, color: Int)
+    fun getStartToggleButtons():List<Boolean>
+    fun setStartToggleButtons(i: Int, toggle: Boolean)
 }

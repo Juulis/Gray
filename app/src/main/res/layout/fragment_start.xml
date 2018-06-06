@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="81dp">
+    tools:layout_editor_absoluteY="81dp"
+    android:id="@+id/start_fragment_layout">
 
     <TextView
         android:id="@+id/start_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="@string/start_title"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,67 +24,63 @@
         android:id="@+id/start_day_of_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:textAlignment="viewStart"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintEnd_toStartOf="@+id/start_settings_button"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/start_title"
         tools:text="Day of progress" />
 
-    <TextView
-        android:id="@+id/start_medication_title"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/start_medication_title"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/start_bulk_amount"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start_day_of_progress"
-        app:layout_constraintVertical_bias="0.852" />
+        app:layout_constraintTop_toBottomOf="@+id/start_day_of_progress">
 
-    <TextView
-        android:id="@+id/start_bulk_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/start_pil_amount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/start_medication_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/start_medication_title"
+            android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/start_pil_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/start_frequency"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/start_bulk_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewStart" />
 
-    <TextView
-        android:id="@+id/start_frequency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="188dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/start_pil_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewStart" />
+
+        <TextView
+            android:id="@+id/start_frequency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewStart" />
+
+    </LinearLayout>
 
     <ImageButton
         android:id="@+id/start_settings_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:src="@drawable/settings_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -91,9 +89,136 @@
         android:id="@+id/start_calendar_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="@string/calendar_button_label"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start_frequency" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="174dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.372">
+
+        <LinearLayout
+            android:id="@+id/toggle_button_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ToggleButton
+                android:id="@+id/start_first_dose_button"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="ToggleButton"
+                android:textOff="X"
+                android:textOn="@string/checkmark"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteY="339dp" />
+
+            <TextView
+                android:id="@+id/first_dose_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/start_first_med"
+                tools:layout_editor_absoluteX="105dp"
+                tools:layout_editor_absoluteY="466dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/toggle_button_2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ToggleButton
+                android:id="@+id/start_second_dose_button"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="ToggleButton"
+                android:textOff="X"
+                android:textOn="@string/checkmark"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteY="450dp" />
+
+            <TextView
+                android:id="@+id/second_dose_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/start_second_med"
+                tools:layout_editor_absoluteX="105dp"
+                tools:layout_editor_absoluteY="430dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/toggle_button_3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ToggleButton
+                android:id="@+id/start_third_dose_button"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="ToggleButton"
+                android:textOff="X"
+                android:textOn="@string/checkmark"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteY="418dp" />
+
+            <TextView
+                android:id="@+id/third_dose_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/start_third_med"
+                tools:layout_editor_absoluteX="105dp"
+                tools:layout_editor_absoluteY="395dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/toggle_button_4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ToggleButton
+                android:id="@+id/start_fourth_dose_button"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="ToggleButton"
+                android:textOff="X"
+                android:textOn="@string/checkmark"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteY="378dp" />
+
+            <TextView
+                android:id="@+id/fourth_dose_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/start_fourth_med"
+                tools:layout_editor_absoluteX="105dp"
+                tools:layout_editor_absoluteY="357dp" />
+        </LinearLayout>
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

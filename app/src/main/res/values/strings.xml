@@ -13,7 +13,7 @@
     <string name="no_values_found_this_date">No data on this date</string>
 
     <!--constants-->
-    <string name="app_name">Grays</string>
+    <string name="app_name">Grays Cleansing Program</string>
     <string name="fragment_start">fragment_start</string>
     <string name="calendar_fragment">calendar_fragment</string>
     <string name="medication_fragment">medication_fragment</string>
@@ -28,17 +28,27 @@
     <string name="set_start_date_cancel_button_label">Cancel</string>
     <string name="saved_start_date">saved_start_date</string>
     <string name="saved_start_date_msg">You have saved %s</string>
-    <string name="start_title">Status</string>
+    <string name="start_title">Today's program</string>
     <string name="start_medication_title">Medication today</string>
     <string name="start_bulk_amount">Bulk: %d tsp</string>
-    <string name="start_pill_amount">Pills: %s pc</string>
+    <string name="start_pill_amount">Pills: %s</string>
     <string name="start_day_of_progress">Progress: %d days</string>
     <string name="start_frequency">%d times a day</string>
     <string name="medication_day">Day: %d</string>
     <string name="start_fase">Fase: %s</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="start_no_program_today">No program to follow today</string>
+    <string name="checkmark">\u2713"</string>
+    <string name="start_first_med">First dose</string>
+    <string name="start_second_med">Second dose</string>
+    <string name="start_third_med">Third dose</string>
+    <string name="start_fourth_med">Fourth dose</string>
+    <string name="took_first_medication">took_first_medication</string>
+    <string name="took_second_medication">took_second_medication</string>
+    <string name="took_third_medication">took_third_medication</string>
+    <string name="took_fourth_medication">took_fourth_medication</string>
+    <string name="date_of_toggle">date_of_toggle</string>
+    <string name="toggle_state_untoggled">Unchecked dose, sure?</string>
+    <string name="undo_string">UNDO</string>
     <string name="time_picker_fragment">time_picker_fragment</string>
     <string name="time_picker_label">Set time</string>
 </resources>

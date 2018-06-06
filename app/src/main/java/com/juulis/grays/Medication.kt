@@ -13,7 +13,7 @@ class Medication(startDate: Date, selectedDate: Date) {
     var frequency: Int? = null
     var pilAmount: String? = null
     var fase: String? = null
-    var daysProgress: Long? = null
+    var daysProgress: Long
 
 
     private val TAG = "Testing in Medication "
@@ -44,8 +44,8 @@ class Medication(startDate: Date, selectedDate: Date) {
         pilAmount = if (pilAmountDouble % 1 == 0.0) pilAmountDouble.toInt().toString() else String.format("%.1f",pilAmountDouble)
         frequency = MedicationFactory.valueOf(fase!!).freq
         bulkAmount = MedicationFactory.valueOf(fase!!).bulkAmount
+        daysProgress += 1
     }
-
 }
 
 
@@ -59,5 +59,4 @@ enum class MedicationFactory(val bulkAmount: Int, val pilAmount: Double, val fre
     G(2, 1.0, 3),
     H(2, 2.0, 3), //TODO can be 4 freq
     I(2, 3.0, 3)  //TODO can be 4 freq
-
 }
