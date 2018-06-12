@@ -59,7 +59,7 @@ class StartFragment : Fragment(), View.OnClickListener {
 
         doseButtons.forEach { btn ->
             if (checkBoxList[doseButtons.indexOf(btn)]) {
-                btn.toggle()
+                btn.isChecked = true
             }
             btn.setOnClickListener(this)
         }
