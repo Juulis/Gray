@@ -9,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import kotlinx.android.synthetic.main.fragment_settings.*
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
 import java.util.*
 
 class SettingsFragment : Fragment(), View.OnClickListener {
@@ -38,7 +41,7 @@ class SettingsFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        when(v.id) {
+        when (v.id) {
             R.id.set_startdate_button -> openDatePicker()
             R.id.week_reverse_button -> reverseWeek()
             R.id.first_notice_button -> openTimePicker(v.id)
@@ -54,10 +57,20 @@ class SettingsFragment : Fragment(), View.OnClickListener {
     }
 
     private fun reverseWeek() {
+        var storedDate = Instant.ofEpochMilli(iMainActivity.getStoredDate()).atZone(ZoneId.systemDefault()).toLocalDate()
+        var currentFase = MedicationFactory.valueOf(Medication(Date(storedDate.toEpochDay()), Date()).fase!!).ordinal
+        val newFase = currentFase.minus(1)
+        while (currentFase != newFase) {
+            storedDate = Instant.ofEpochMilli(iMainActivity.getStoredDate()).atZone(ZoneId.systemDefault()).toLocalDate()
+            iMainActivity.setStoredDate(storedDate.minusDays(1).toEpochDay())
+            currentFase = MedicationFactory.valueOf(Medication(Date(storedDate.toEpochDay()), Date()).fase!!).ordinal
+        }
+        iMainActivity.setStoredDate(storedDate.plusDays(1).toEpochDay())
     }
 
+
     private fun openDatePicker() {
-        iMainActivity.inflateFragment(getString(R.string.calendar_fragment),setDateMode = true)
+        iMainActivity.inflateFragment(getString(R.string.calendar_fragment), setDateMode = true)
     }
 
 
